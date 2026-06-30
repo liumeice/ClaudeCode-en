@@ -1,0 +1,981 @@
+{
+  "source": "https://code.claude.com/docs/en/",
+  "root": "Claude Code Documentation (en)",
+  "total_pages": 143,
+  "children": [
+    {
+      "title": "Getting started",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Overview",
+          "href": "/docs/en/overview",
+          "level": 2
+        },
+        {
+          "title": "Quickstart",
+          "href": "/docs/en/quickstart",
+          "level": 2
+        },
+        {
+          "title": "Changelog",
+          "href": "/docs/en/changelog",
+          "level": 2
+        },
+        {
+          "title": "Core concepts",
+          "href": "/docs/en/how-claude-code-works",
+          "level": 2,
+          "children": [
+            {
+              "title": "How Claude Code works",
+              "href": "/docs/en/how-claude-code-works",
+              "level": 3
+            },
+            {
+              "title": "Extend Claude Code",
+              "href": "/docs/en/features-overview",
+              "level": 3
+            },
+            {
+              "title": "Explore the .claude directory",
+              "href": "/docs/en/claude-directory",
+              "level": 3
+            },
+            {
+              "title": "Explore the context window",
+              "href": "/docs/en/context-window",
+              "level": 3
+            },
+            {
+              "title": "Prompt caching",
+              "href": "/docs/en/prompt-caching",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Use Claude Code",
+          "href": "/docs/en/memory",
+          "level": 2,
+          "children": [
+            {
+              "title": "Store instructions and memories",
+              "href": "/docs/en/memory",
+              "level": 3
+            },
+            {
+              "title": "Permission modes",
+              "href": "/docs/en/permission-modes",
+              "level": 3
+            },
+            {
+              "title": "Manage sessions",
+              "href": "/docs/en/sessions",
+              "level": 3
+            },
+            {
+              "title": "Common workflows",
+              "href": "/docs/en/common-workflows",
+              "level": 3
+            },
+            {
+              "title": "Prompt library",
+              "href": "/docs/en/prompt-library",
+              "level": 3
+            },
+            {
+              "title": "Best practices",
+              "href": "/docs/en/best-practices",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Platforms and integrations",
+          "href": "/docs/en/platforms",
+          "level": 2,
+          "children": [
+            {
+              "title": "Overview",
+              "href": "/docs/en/platforms",
+              "level": 3
+            },
+            {
+              "title": "Remote Control",
+              "href": "/docs/en/remote-control",
+              "level": 3
+            },
+            {
+              "title": "Chrome extension (beta)",
+              "href": "/docs/en/chrome",
+              "level": 3
+            },
+            {
+              "title": "Computer use (preview)",
+              "href": "/docs/en/computer-use",
+              "level": 3
+            },
+            {
+              "title": "Visual Studio Code",
+              "href": "/docs/en/vs-code",
+              "level": 3
+            },
+            {
+              "title": "JetBrains IDEs",
+              "href": "/docs/en/jetbrains",
+              "level": 3
+            },
+            {
+              "title": "Claude Code in Slack",
+              "href": "/docs/en/slack",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Build with Claude Code",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Agents and parallel work",
+          "href": "/docs/en/agents",
+          "level": 2,
+          "children": [
+            {
+              "title": "Overview",
+              "href": "/docs/en/agents",
+              "level": 3
+            },
+            {
+              "title": "Create custom subagents",
+              "href": "/docs/en/sub-agents",
+              "level": 3
+            },
+            {
+              "title": "Agent view",
+              "href": "/docs/en/agent-view",
+              "level": 3
+            },
+            {
+              "title": "Run agent teams",
+              "href": "/docs/en/agent-teams",
+              "level": 3
+            },
+            {
+              "title": "Dynamic workflows",
+              "href": "/docs/en/workflows",
+              "level": 3
+            },
+            {
+              "title": "Isolate sessions with worktrees",
+              "href": "/docs/en/worktrees",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "MCP",
+          "href": "/docs/en/mcp-quickstart",
+          "level": 2,
+          "children": [
+            {
+              "title": "Quickstart",
+              "href": "/docs/en/mcp-quickstart",
+              "level": 3
+            },
+            {
+              "title": "Reference",
+              "href": "/docs/en/mcp",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Skills",
+          "href": "/docs/en/skills",
+          "level": 2,
+          "children": [
+            {
+              "title": "Extend Claude with skills",
+              "href": "/docs/en/skills",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Plugins",
+          "href": "/docs/en/discover-plugins",
+          "level": 2,
+          "children": [
+            {
+              "title": "Discover and install prebuilt plugins",
+              "href": "/docs/en/discover-plugins",
+              "level": 3
+            },
+            {
+              "title": "Create plugins",
+              "href": "/docs/en/plugins",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Artifacts",
+          "href": "/docs/en/artifacts",
+          "level": 2,
+          "children": [
+            {
+              "title": "Share session output as artifacts",
+              "href": "/docs/en/artifacts",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Automation",
+          "href": "/docs/en/hooks-guide",
+          "level": 2,
+          "children": [
+            {
+              "title": "Automate with hooks",
+              "href": "/docs/en/hooks-guide",
+              "level": 3
+            },
+            {
+              "title": "Push external events to Claude",
+              "href": "/docs/en/channels",
+              "level": 3
+            },
+            {
+              "title": "Run prompts on a schedule",
+              "href": "/docs/en/scheduled-tasks",
+              "level": 3
+            },
+            {
+              "title": "Goals",
+              "href": "/docs/en/goal",
+              "level": 3
+            },
+            {
+              "title": "Programmatic usage",
+              "href": "/docs/en/headless",
+              "level": 3
+            },
+            {
+              "title": "Launch sessions from links",
+              "href": "/docs/en/deep-links",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Guides",
+          "href": "/docs/en/large-codebases",
+          "level": 2,
+          "children": [
+            {
+              "title": "Monorepos and large repos",
+              "href": "/docs/en/large-codebases",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "href": "/docs/en/troubleshoot-install",
+          "level": 2,
+          "children": [
+            {
+              "title": "Troubleshoot installation and login",
+              "href": "/docs/en/troubleshoot-install",
+              "level": 3
+            },
+            {
+              "title": "Troubleshoot performance and stability",
+              "href": "/docs/en/troubleshooting",
+              "level": 3
+            },
+            {
+              "title": "Debug configuration",
+              "href": "/docs/en/debug-your-config",
+              "level": 3
+            },
+            {
+              "title": "Error reference",
+              "href": "/docs/en/errors",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Administration",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Setup and access",
+          "href": "/docs/en/admin-setup",
+          "level": 2,
+          "children": [
+            {
+              "title": "Administration overview",
+              "href": "/docs/en/admin-setup",
+              "level": 3
+            },
+            {
+              "title": "Advanced setup",
+              "href": "/docs/en/setup",
+              "level": 3
+            },
+            {
+              "title": "Authentication",
+              "href": "/docs/en/authentication",
+              "level": 3
+            },
+            {
+              "title": "Server-managed settings",
+              "href": "/docs/en/server-managed-settings",
+              "level": 3
+            },
+            {
+              "title": "Managed MCP configuration",
+              "href": "/docs/en/managed-mcp",
+              "level": 3
+            },
+            {
+              "title": "Auto mode",
+              "href": "/docs/en/auto-mode-config",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Deployment",
+          "href": "/docs/en/third-party-integrations",
+          "level": 2,
+          "children": [
+            {
+              "title": "Overview",
+              "href": "/docs/en/third-party-integrations",
+              "level": 3
+            },
+            {
+              "title": "Feature availability",
+              "href": "/docs/en/feature-availability",
+              "level": 3
+            },
+            {
+              "title": "Amazon Bedrock",
+              "href": "/docs/en/amazon-bedrock",
+              "level": 3
+            },
+            {
+              "title": "Claude Platform on AWS",
+              "href": "/docs/en/claude-platform-on-aws",
+              "level": 3
+            },
+            {
+              "title": "Google Vertex AI",
+              "href": "/docs/en/google-vertex-ai",
+              "level": 3
+            },
+            {
+              "title": "Microsoft Foundry",
+              "href": "/docs/en/microsoft-foundry",
+              "level": 3
+            },
+            {
+              "title": "Network configuration",
+              "href": "/docs/en/network-config",
+              "level": 3
+            },
+            {
+              "title": "Development containers",
+              "href": "/docs/en/devcontainer",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "LLM gateway",
+          "href": "/docs/en/llm-gateway",
+          "level": 2,
+          "children": [
+            {
+              "title": "Overview",
+              "href": "/docs/en/llm-gateway",
+              "level": 3
+            },
+            {
+              "title": "Connect to a gateway",
+              "href": "/docs/en/llm-gateway-connect",
+              "level": 3
+            },
+            {
+              "title": "Organization rollout",
+              "href": "/docs/en/llm-gateway-rollout",
+              "level": 3
+            },
+            {
+              "title": "Protocol reference",
+              "href": "/docs/en/llm-gateway-protocol",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Usage and costs",
+          "href": "/docs/en/monitoring-usage",
+          "level": 2,
+          "children": [
+            {
+              "title": "Monitoring",
+              "href": "/docs/en/monitoring-usage",
+              "level": 3
+            },
+            {
+              "title": "Costs",
+              "href": "/docs/en/costs",
+              "level": 3
+            },
+            {
+              "title": "Track team usage with analytics",
+              "href": "/docs/en/analytics",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Plugin distribution",
+          "href": "/docs/en/plugin-marketplaces",
+          "level": 2,
+          "children": [
+            {
+              "title": "Create and distribute a plugin marketplace",
+              "href": "/docs/en/plugin-marketplaces",
+              "level": 3
+            },
+            {
+              "title": "Plugin dependency versions",
+              "href": "/docs/en/plugin-dependencies",
+              "level": 3
+            },
+            {
+              "title": "Recommend your plugin from your CLI",
+              "href": "/docs/en/plugin-hints",
+              "level": 3
+            },
+            {
+              "title": "Recommend plugins for your org",
+              "href": "/docs/en/plugin-relevance",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Security and data",
+          "href": "/docs/en/security",
+          "level": 2,
+          "children": [
+            {
+              "title": "Security",
+              "href": "/docs/en/security",
+              "level": 3
+            },
+            {
+              "title": "Data usage",
+              "href": "/docs/en/data-usage",
+              "level": 3
+            },
+            {
+              "title": "Zero data retention",
+              "href": "/docs/en/zero-data-retention",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Adoption",
+          "href": "/docs/en/communications-kit",
+          "level": 2,
+          "children": [
+            {
+              "title": "Communications kit",
+              "href": "/docs/en/communications-kit",
+              "level": 3
+            },
+            {
+              "title": "Champion kit",
+              "href": "/docs/en/champion-kit",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Configuration",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Settings and permissions",
+          "href": "/docs/en/settings",
+          "level": 2,
+          "children": [
+            {
+              "title": "Settings",
+              "href": "/docs/en/settings",
+              "level": 3
+            },
+            {
+              "title": "Permissions",
+              "href": "/docs/en/permissions",
+              "level": 3
+            },
+            {
+              "title": "Sandbox environments",
+              "href": "/docs/en/sandbox-environments",
+              "level": 3
+            },
+            {
+              "title": "Bash sandbox",
+              "href": "/docs/en/sandboxing",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Model and responses",
+          "href": "/docs/en/model-config",
+          "level": 2,
+          "children": [
+            {
+              "title": "Model configuration",
+              "href": "/docs/en/model-config",
+              "level": 3
+            },
+            {
+              "title": "Speed up responses with fast mode",
+              "href": "/docs/en/fast-mode",
+              "level": 3
+            },
+            {
+              "title": "Escalate hard decisions with the advisor tool",
+              "href": "/docs/en/advisor",
+              "level": 3
+            },
+            {
+              "title": "Output styles",
+              "href": "/docs/en/output-styles",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Interface",
+          "href": "/docs/en/terminal-config",
+          "level": 2,
+          "children": [
+            {
+              "title": "Terminal configuration",
+              "href": "/docs/en/terminal-config",
+              "level": 3
+            },
+            {
+              "title": "Fullscreen rendering",
+              "href": "/docs/en/fullscreen",
+              "level": 3
+            },
+            {
+              "title": "Voice dictation",
+              "href": "/docs/en/voice-dictation",
+              "level": 3
+            },
+            {
+              "title": "Customize status line",
+              "href": "/docs/en/statusline",
+              "level": 3
+            },
+            {
+              "title": "Customize keyboard shortcuts",
+              "href": "/docs/en/keybindings",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "CLI reference",
+          "href": "/docs/en/cli-reference",
+          "level": 2
+        },
+        {
+          "title": "Commands",
+          "href": "/docs/en/commands",
+          "level": 2
+        },
+        {
+          "title": "Environment variables",
+          "href": "/docs/en/env-vars",
+          "level": 2
+        },
+        {
+          "title": "Tools reference",
+          "href": "/docs/en/tools-reference",
+          "level": 2
+        },
+        {
+          "title": "Interactive mode",
+          "href": "/docs/en/interactive-mode",
+          "level": 2
+        },
+        {
+          "title": "Checkpointing",
+          "href": "/docs/en/checkpointing",
+          "level": 2
+        },
+        {
+          "title": "Hooks reference",
+          "href": "/docs/en/hooks",
+          "level": 2
+        },
+        {
+          "title": "Plugins reference",
+          "href": "/docs/en/plugins-reference",
+          "level": 2
+        },
+        {
+          "title": "Channels reference",
+          "href": "/docs/en/channels-reference",
+          "level": 2
+        },
+        {
+          "title": "Glossary",
+          "href": "/docs/en/glossary",
+          "level": 2,
+          "children": [
+            {
+              "title": "Glossary",
+              "href": "/docs/en/glossary",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Agent SDK",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Overview",
+          "href": "/docs/en/agent-sdk/overview",
+          "level": 2
+        },
+        {
+          "title": "Quickstart",
+          "href": "/docs/en/agent-sdk/quickstart",
+          "level": 2
+        },
+        {
+          "title": "Core concepts",
+          "href": "/docs/en/agent-sdk/agent-loop",
+          "level": 2,
+          "children": [
+            {
+              "title": "How the agent loop works",
+              "href": "/docs/en/agent-sdk/agent-loop",
+              "level": 3
+            },
+            {
+              "title": "Use Claude Code features",
+              "href": "/docs/en/agent-sdk/claude-code-features",
+              "level": 3
+            },
+            {
+              "title": "Work with sessions",
+              "href": "/docs/en/agent-sdk/sessions",
+              "level": 3
+            },
+            {
+              "title": "Persist sessions to external storage",
+              "href": "/docs/en/agent-sdk/session-storage",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Input and output",
+          "href": "/docs/en/agent-sdk/streaming-vs-single-mode",
+          "level": 2,
+          "children": [
+            {
+              "title": "Streaming Input",
+              "href": "/docs/en/agent-sdk/streaming-vs-single-mode",
+              "level": 3
+            },
+            {
+              "title": "Handle approvals and user input",
+              "href": "/docs/en/agent-sdk/user-input",
+              "level": 3
+            },
+            {
+              "title": "Stream responses in real-time",
+              "href": "/docs/en/agent-sdk/streaming-output",
+              "level": 3
+            },
+            {
+              "title": "Get structured output from agents",
+              "href": "/docs/en/agent-sdk/structured-outputs",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Extend with tools",
+          "href": "/docs/en/agent-sdk/custom-tools",
+          "level": 2,
+          "children": [
+            {
+              "title": "Give Claude custom tools",
+              "href": "/docs/en/agent-sdk/custom-tools",
+              "level": 3
+            },
+            {
+              "title": "Connect to external tools with MCP",
+              "href": "/docs/en/agent-sdk/mcp",
+              "level": 3
+            },
+            {
+              "title": "Scale to many tools with tool search",
+              "href": "/docs/en/agent-sdk/tool-search",
+              "level": 3
+            },
+            {
+              "title": "Subagents in the SDK",
+              "href": "/docs/en/agent-sdk/subagents",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Customize behavior",
+          "href": "/docs/en/agent-sdk/modifying-system-prompts",
+          "level": 2,
+          "children": [
+            {
+              "title": "Modifying system prompts",
+              "href": "/docs/en/agent-sdk/modifying-system-prompts",
+              "level": 3
+            },
+            {
+              "title": "Slash Commands in the SDK",
+              "href": "/docs/en/agent-sdk/slash-commands",
+              "level": 3
+            },
+            {
+              "title": "Agent Skills in the SDK",
+              "href": "/docs/en/agent-sdk/skills",
+              "level": 3
+            },
+            {
+              "title": "Plugins in the SDK",
+              "href": "/docs/en/agent-sdk/plugins",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Control and observability",
+          "href": "/docs/en/agent-sdk/permissions",
+          "level": 2,
+          "children": [
+            {
+              "title": "Configure permissions",
+              "href": "/docs/en/agent-sdk/permissions",
+              "level": 3
+            },
+            {
+              "title": "Intercept and control agent behavior with hooks",
+              "href": "/docs/en/agent-sdk/hooks",
+              "level": 3
+            },
+            {
+              "title": "Rewind file changes with checkpointing",
+              "href": "/docs/en/agent-sdk/file-checkpointing",
+              "level": 3
+            },
+            {
+              "title": "Track cost and usage",
+              "href": "/docs/en/agent-sdk/cost-tracking",
+              "level": 3
+            },
+            {
+              "title": "Observability with OpenTelemetry",
+              "href": "/docs/en/agent-sdk/observability",
+              "level": 3
+            },
+            {
+              "title": "Todo Lists",
+              "href": "/docs/en/agent-sdk/todo-tracking",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "Deployment",
+          "href": "/docs/en/agent-sdk/hosting",
+          "level": 2,
+          "children": [
+            {
+              "title": "Hosting the Agent SDK",
+              "href": "/docs/en/agent-sdk/hosting",
+              "level": 3
+            },
+            {
+              "title": "Securely deploying AI agents",
+              "href": "/docs/en/agent-sdk/secure-deployment",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "title": "SDK references",
+          "href": "/docs/en/agent-sdk/typescript",
+          "level": 2,
+          "children": [
+            {
+              "title": "TypeScript SDK",
+              "href": "/docs/en/agent-sdk/typescript",
+              "level": 3
+            },
+            {
+              "title": "TypeScript V2 (removed)",
+              "href": "/docs/en/agent-sdk/typescript-v2-preview",
+              "level": 3
+            },
+            {
+              "title": "Python SDK",
+              "href": "/docs/en/agent-sdk/python",
+              "level": 3
+            },
+            {
+              "title": "Migration Guide",
+              "href": "/docs/en/agent-sdk/migration-guide",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "What's New",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "What's new",
+          "href": "/docs/en/whats-new",
+          "level": 2
+        },
+        {
+          "title": "Week 26 · June 22–26",
+          "href": "/docs/en/whats-new/2026-w26",
+          "level": 2
+        },
+        {
+          "title": "Week 25 · June 15–19",
+          "href": "/docs/en/whats-new/2026-w25",
+          "level": 2
+        },
+        {
+          "title": "Week 24 · June 8–12",
+          "href": "/docs/en/whats-new/2026-w24",
+          "level": 2
+        },
+        {
+          "title": "Week 23 · June 1–5",
+          "href": "/docs/en/whats-new/2026-w23",
+          "level": 2
+        },
+        {
+          "title": "Week 22 · May 25–29",
+          "href": "/docs/en/whats-new/2026-w22",
+          "level": 2
+        },
+        {
+          "title": "Week 21 · May 18–22",
+          "href": "/docs/en/whats-new/2026-w21",
+          "level": 2
+        },
+        {
+          "title": "Week 20 · May 11–15",
+          "href": "/docs/en/whats-new/2026-w20",
+          "level": 2
+        },
+        {
+          "title": "Week 19 · May 4–8",
+          "href": "/docs/en/whats-new/2026-w19",
+          "level": 2
+        },
+        {
+          "title": "Week 18 · Apr 27 – May 1",
+          "href": "/docs/en/whats-new/2026-w18",
+          "level": 2
+        },
+        {
+          "title": "Week 17 · Apr 20–24",
+          "href": "/docs/en/whats-new/2026-w17",
+          "level": 2
+        },
+        {
+          "title": "Week 16 · Apr 13–17",
+          "href": "/docs/en/whats-new/2026-w16",
+          "level": 2
+        },
+        {
+          "title": "Week 15 · Apr 6–10",
+          "href": "/docs/en/whats-new/2026-w15",
+          "level": 2
+        },
+        {
+          "title": "Week 14 · Mar 30 – Apr 3",
+          "href": "/docs/en/whats-new/2026-w14",
+          "level": 2
+        },
+        {
+          "title": "Week 13 · Mar 23–27",
+          "href": "/docs/en/whats-new/2026-w13",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "title": "Resources",
+      "href": "",
+      "level": 1,
+      "children": [
+        {
+          "title": "Legal and compliance",
+          "href": "/docs/en/legal-and-compliance",
+          "level": 2
+        }
+      ]
+    }
+  ]
+}

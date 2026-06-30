@@ -1,0 +1,185 @@
+# Claude Code Documentation - Table of Contents (en)
+
+Source: https://code.claude.com/docs/en/
+Total pages: 143
+
+- **Getting started**
+  - [Overview](https://code.claude.com/docs/en/overview)
+  - [Quickstart](https://code.claude.com/docs/en/quickstart)
+  - [Changelog](https://code.claude.com/docs/en/changelog)
+  - **Core concepts**
+    - [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works)
+    - [Extend Claude Code](https://code.claude.com/docs/en/features-overview)
+    - [Explore the .claude directory](https://code.claude.com/docs/en/claude-directory)
+    - [Explore the context window](https://code.claude.com/docs/en/context-window)
+    - [Prompt caching](https://code.claude.com/docs/en/prompt-caching)
+  - **Use Claude Code**
+    - [Store instructions and memories](https://code.claude.com/docs/en/memory)
+    - [Permission modes](https://code.claude.com/docs/en/permission-modes)
+    - [Manage sessions](https://code.claude.com/docs/en/sessions)
+    - [Common workflows](https://code.claude.com/docs/en/common-workflows)
+    - [Prompt library](https://code.claude.com/docs/en/prompt-library)
+    - [Best practices](https://code.claude.com/docs/en/best-practices)
+  - **Platforms and integrations**
+    - [Overview](https://code.claude.com/docs/en/platforms)
+    - [Remote Control](https://code.claude.com/docs/en/remote-control)
+    - [Chrome extension (beta)](https://code.claude.com/docs/en/chrome)
+    - [Computer use (preview)](https://code.claude.com/docs/en/computer-use)
+    - [Visual Studio Code](https://code.claude.com/docs/en/vs-code)
+    - [JetBrains IDEs](https://code.claude.com/docs/en/jetbrains)
+    - [Claude Code in Slack](https://code.claude.com/docs/en/slack)
+- **Build with Claude Code**
+  - **Agents and parallel work**
+    - [Overview](https://code.claude.com/docs/en/agents)
+    - [Create custom subagents](https://code.claude.com/docs/en/sub-agents)
+    - [Agent view](https://code.claude.com/docs/en/agent-view)
+    - [Run agent teams](https://code.claude.com/docs/en/agent-teams)
+    - [Dynamic workflows](https://code.claude.com/docs/en/workflows)
+    - [Isolate sessions with worktrees](https://code.claude.com/docs/en/worktrees)
+  - **MCP**
+    - [Quickstart](https://code.claude.com/docs/en/mcp-quickstart)
+    - [Reference](https://code.claude.com/docs/en/mcp)
+  - **Skills**
+    - [Extend Claude with skills](https://code.claude.com/docs/en/skills)
+  - **Plugins**
+    - [Discover and install prebuilt plugins](https://code.claude.com/docs/en/discover-plugins)
+    - [Create plugins](https://code.claude.com/docs/en/plugins)
+  - **Artifacts**
+    - [Share session output as artifacts](https://code.claude.com/docs/en/artifacts)
+  - **Automation**
+    - [Automate with hooks](https://code.claude.com/docs/en/hooks-guide)
+    - [Push external events to Claude](https://code.claude.com/docs/en/channels)
+    - [Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks)
+    - [Goals](https://code.claude.com/docs/en/goal)
+    - [Programmatic usage](https://code.claude.com/docs/en/headless)
+    - [Launch sessions from links](https://code.claude.com/docs/en/deep-links)
+  - **Guides**
+    - [Monorepos and large repos](https://code.claude.com/docs/en/large-codebases)
+  - **Troubleshooting**
+    - [Troubleshoot installation and login](https://code.claude.com/docs/en/troubleshoot-install)
+    - [Troubleshoot performance and stability](https://code.claude.com/docs/en/troubleshooting)
+    - [Debug configuration](https://code.claude.com/docs/en/debug-your-config)
+    - [Error reference](https://code.claude.com/docs/en/errors)
+- **Administration**
+  - **Setup and access**
+    - [Administration overview](https://code.claude.com/docs/en/admin-setup)
+    - [Advanced setup](https://code.claude.com/docs/en/setup)
+    - [Authentication](https://code.claude.com/docs/en/authentication)
+    - [Server-managed settings](https://code.claude.com/docs/en/server-managed-settings)
+    - [Managed MCP configuration](https://code.claude.com/docs/en/managed-mcp)
+    - [Auto mode](https://code.claude.com/docs/en/auto-mode-config)
+  - **Deployment**
+    - [Overview](https://code.claude.com/docs/en/third-party-integrations)
+    - [Feature availability](https://code.claude.com/docs/en/feature-availability)
+    - [Amazon Bedrock](https://code.claude.com/docs/en/amazon-bedrock)
+    - [Claude Platform on AWS](https://code.claude.com/docs/en/claude-platform-on-aws)
+    - [Google Vertex AI](https://code.claude.com/docs/en/google-vertex-ai)
+    - [Microsoft Foundry](https://code.claude.com/docs/en/microsoft-foundry)
+    - [Network configuration](https://code.claude.com/docs/en/network-config)
+    - [Development containers](https://code.claude.com/docs/en/devcontainer)
+  - **LLM gateway**
+    - [Overview](https://code.claude.com/docs/en/llm-gateway)
+    - [Connect to a gateway](https://code.claude.com/docs/en/llm-gateway-connect)
+    - [Organization rollout](https://code.claude.com/docs/en/llm-gateway-rollout)
+    - [Protocol reference](https://code.claude.com/docs/en/llm-gateway-protocol)
+  - **Usage and costs**
+    - [Monitoring](https://code.claude.com/docs/en/monitoring-usage)
+    - [Costs](https://code.claude.com/docs/en/costs)
+    - [Track team usage with analytics](https://code.claude.com/docs/en/analytics)
+  - **Plugin distribution**
+    - [Create and distribute a plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
+    - [Plugin dependency versions](https://code.claude.com/docs/en/plugin-dependencies)
+    - [Recommend your plugin from your CLI](https://code.claude.com/docs/en/plugin-hints)
+    - [Recommend plugins for your org](https://code.claude.com/docs/en/plugin-relevance)
+  - **Security and data**
+    - [Security](https://code.claude.com/docs/en/security)
+    - [Data usage](https://code.claude.com/docs/en/data-usage)
+    - [Zero data retention](https://code.claude.com/docs/en/zero-data-retention)
+  - **Adoption**
+    - [Communications kit](https://code.claude.com/docs/en/communications-kit)
+    - [Champion kit](https://code.claude.com/docs/en/champion-kit)
+- **Configuration**
+  - **Settings and permissions**
+    - [Settings](https://code.claude.com/docs/en/settings)
+    - [Permissions](https://code.claude.com/docs/en/permissions)
+    - [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments)
+    - [Bash sandbox](https://code.claude.com/docs/en/sandboxing)
+  - **Model and responses**
+    - [Model configuration](https://code.claude.com/docs/en/model-config)
+    - [Speed up responses with fast mode](https://code.claude.com/docs/en/fast-mode)
+    - [Escalate hard decisions with the advisor tool](https://code.claude.com/docs/en/advisor)
+    - [Output styles](https://code.claude.com/docs/en/output-styles)
+  - **Interface**
+    - [Terminal configuration](https://code.claude.com/docs/en/terminal-config)
+    - [Fullscreen rendering](https://code.claude.com/docs/en/fullscreen)
+    - [Voice dictation](https://code.claude.com/docs/en/voice-dictation)
+    - [Customize status line](https://code.claude.com/docs/en/statusline)
+    - [Customize keyboard shortcuts](https://code.claude.com/docs/en/keybindings)
+- **Reference**
+  - [CLI reference](https://code.claude.com/docs/en/cli-reference)
+  - [Commands](https://code.claude.com/docs/en/commands)
+  - [Environment variables](https://code.claude.com/docs/en/env-vars)
+  - [Tools reference](https://code.claude.com/docs/en/tools-reference)
+  - [Interactive mode](https://code.claude.com/docs/en/interactive-mode)
+  - [Checkpointing](https://code.claude.com/docs/en/checkpointing)
+  - [Hooks reference](https://code.claude.com/docs/en/hooks)
+  - [Plugins reference](https://code.claude.com/docs/en/plugins-reference)
+  - [Channels reference](https://code.claude.com/docs/en/channels-reference)
+  - **Glossary**
+    - [Glossary](https://code.claude.com/docs/en/glossary)
+- **Agent SDK**
+  - [Overview](https://code.claude.com/docs/en/agent-sdk/overview)
+  - [Quickstart](https://code.claude.com/docs/en/agent-sdk/quickstart)
+  - **Core concepts**
+    - [How the agent loop works](https://code.claude.com/docs/en/agent-sdk/agent-loop)
+    - [Use Claude Code features](https://code.claude.com/docs/en/agent-sdk/claude-code-features)
+    - [Work with sessions](https://code.claude.com/docs/en/agent-sdk/sessions)
+    - [Persist sessions to external storage](https://code.claude.com/docs/en/agent-sdk/session-storage)
+  - **Input and output**
+    - [Streaming Input](https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode)
+    - [Handle approvals and user input](https://code.claude.com/docs/en/agent-sdk/user-input)
+    - [Stream responses in real-time](https://code.claude.com/docs/en/agent-sdk/streaming-output)
+    - [Get structured output from agents](https://code.claude.com/docs/en/agent-sdk/structured-outputs)
+  - **Extend with tools**
+    - [Give Claude custom tools](https://code.claude.com/docs/en/agent-sdk/custom-tools)
+    - [Connect to external tools with MCP](https://code.claude.com/docs/en/agent-sdk/mcp)
+    - [Scale to many tools with tool search](https://code.claude.com/docs/en/agent-sdk/tool-search)
+    - [Subagents in the SDK](https://code.claude.com/docs/en/agent-sdk/subagents)
+  - **Customize behavior**
+    - [Modifying system prompts](https://code.claude.com/docs/en/agent-sdk/modifying-system-prompts)
+    - [Slash Commands in the SDK](https://code.claude.com/docs/en/agent-sdk/slash-commands)
+    - [Agent Skills in the SDK](https://code.claude.com/docs/en/agent-sdk/skills)
+    - [Plugins in the SDK](https://code.claude.com/docs/en/agent-sdk/plugins)
+  - **Control and observability**
+    - [Configure permissions](https://code.claude.com/docs/en/agent-sdk/permissions)
+    - [Intercept and control agent behavior with hooks](https://code.claude.com/docs/en/agent-sdk/hooks)
+    - [Rewind file changes with checkpointing](https://code.claude.com/docs/en/agent-sdk/file-checkpointing)
+    - [Track cost and usage](https://code.claude.com/docs/en/agent-sdk/cost-tracking)
+    - [Observability with OpenTelemetry](https://code.claude.com/docs/en/agent-sdk/observability)
+    - [Todo Lists](https://code.claude.com/docs/en/agent-sdk/todo-tracking)
+  - **Deployment**
+    - [Hosting the Agent SDK](https://code.claude.com/docs/en/agent-sdk/hosting)
+    - [Securely deploying AI agents](https://code.claude.com/docs/en/agent-sdk/secure-deployment)
+  - **SDK references**
+    - [TypeScript SDK](https://code.claude.com/docs/en/agent-sdk/typescript)
+    - [TypeScript V2 (removed)](https://code.claude.com/docs/en/agent-sdk/typescript-v2-preview)
+    - [Python SDK](https://code.claude.com/docs/en/agent-sdk/python)
+    - [Migration Guide](https://code.claude.com/docs/en/agent-sdk/migration-guide)
+- **What's New**
+  - [What's new](https://code.claude.com/docs/en/whats-new)
+  - [Week 26 · June 22–26](https://code.claude.com/docs/en/whats-new/2026-w26)
+  - [Week 25 · June 15–19](https://code.claude.com/docs/en/whats-new/2026-w25)
+  - [Week 24 · June 8–12](https://code.claude.com/docs/en/whats-new/2026-w24)
+  - [Week 23 · June 1–5](https://code.claude.com/docs/en/whats-new/2026-w23)
+  - [Week 22 · May 25–29](https://code.claude.com/docs/en/whats-new/2026-w22)
+  - [Week 21 · May 18–22](https://code.claude.com/docs/en/whats-new/2026-w21)
+  - [Week 20 · May 11–15](https://code.claude.com/docs/en/whats-new/2026-w20)
+  - [Week 19 · May 4–8](https://code.claude.com/docs/en/whats-new/2026-w19)
+  - [Week 18 · Apr 27 – May 1](https://code.claude.com/docs/en/whats-new/2026-w18)
+  - [Week 17 · Apr 20–24](https://code.claude.com/docs/en/whats-new/2026-w17)
+  - [Week 16 · Apr 13–17](https://code.claude.com/docs/en/whats-new/2026-w16)
+  - [Week 15 · Apr 6–10](https://code.claude.com/docs/en/whats-new/2026-w15)
+  - [Week 14 · Mar 30 – Apr 3](https://code.claude.com/docs/en/whats-new/2026-w14)
+  - [Week 13 · Mar 23–27](https://code.claude.com/docs/en/whats-new/2026-w13)
+- **Resources**
+  - [Legal and compliance](https://code.claude.com/docs/en/legal-and-compliance)
