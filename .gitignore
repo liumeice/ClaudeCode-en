@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+
+# Generated artifacts (pipeline intermediates)
+sidebar.json
+sidebar.md
+
+# Temporary files
+temp/
+
+# Output PDFs
+Output/
+
+# Backup files
+*.bak
+
+# Claude Code session data
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
