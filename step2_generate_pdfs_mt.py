@@ -33,25 +33,140 @@ ORIGIN = 'https://code.claude.com'
 # Reuse the same DOM manipulation JS from the single-threaded version
 DOM_MANIPULATE_JS = """
 function() {
-  document.querySelectorAll('[class*="pt-40"], [class*="pt-32"]').forEach(function(el) {
-    var c = el.getAttribute('class') || '';
-    if (c.indexOf('pt-40') >= 0 || c.indexOf('pt-32') >= 0) {
-      el.style.setProperty('padding-top', '0', 'important');
+  // === Keep top nav bar and icons, hide unwanted elements ===
+
+  // 1. Compress vertical spacing in the main content area
+  //    (diagnosed: pt-[calc(10rem+...)] = 160px+ computed, mt-8 = 32px, mb-14 = 32px,
+  //     h2 mt = 36px, code blocks mt-5/mb-8 = 20/32px, card grids mt-6/mt-8 = 24/32px)
+
+  // 1a. Main content wrapper: the huge top padding pt-[calc(10rem+var(--banner-height,...))]
+  //     and lg:pt-10 / pt-10 all create 40px-160px of top padding. Reduce to a small value.
+  document.querySelectorAll('[class*="pt-"]').forEach(function(el) {
+    var cls = el.getAttribute('class') || '';
+    // Match: pt-[calc(...)], pt-[XXrem], pt-[XXpx] (arbitrary values)
+    if (/pt-\[/.test(cls)) {
+      el.style.setProperty('padding-top', '16px', 'important');
     }
   });
+  // pt-10 (40px), pt-12 (48px), pt-16 (64px), pt-20 (80px), pt-24 (96px),
+  // pt-28 (112px), pt-32 (128px), pt-36 (144px), pt-40 (160px)
+  // Keep pt-0..pt-4 (0-16px) alone; reduce anything larger.
+  var largePT = ['pt-10','pt-12','pt-14','pt-16','pt-20','pt-24','pt-28','pt-32','pt-36','pt-40','pt-44','pt-48','pt-52','pt-56','pt-60','pt-64','pt-72','pt-80','pt-96'];
+  largePT.forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      // Only override if not already set via style above (arbitrary values)
+      if (el.style.paddingTop !== '16px') {
+        el.style.setProperty('padding-top', '8px', 'important');
+      }
+    });
+  });
+
+  // 1b. Scroll area inner: pt-10 (40px) + pb-4 (16px) → compact
+  ['pt-10','pt-8','pt-12','pt-14','pt-16'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      if (el.style.paddingTop !== '16px') {
+        el.style.setProperty('padding-top', '4px', 'important');
+      }
+    });
+  });
+  ['pb-4','pb-6','pb-8','pb-10','pb-12'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      el.style.setProperty('padding-bottom', '4px', 'important');
+    });
+  });
+
+  // 1c. Content area (.mdx-content): mt-8 (32px) + mb-14 (32px) → compact
+  document.querySelectorAll('[class*="mdx-content"]').forEach(function(el) {
+    el.style.setProperty('margin-top', '8px', 'important');
+    el.style.setProperty('margin-bottom', '8px', 'important');
+  });
+  // Generic mt-8, mb-14 on non-content elements too
+  ['mt-8','mt-10','mt-12','mt-14','mt-16','mt-20','mt-24'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      if (!el.classList.contains('mdx-content')) {
+        el.style.setProperty('margin-top', '8px', 'important');
+      }
+    });
+  });
+  ['mb-8','mb-10','mb-12','mb-14','mb-16','mb-20','mb-24'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      if (!el.classList.contains('mdx-content')) {
+        el.style.setProperty('margin-bottom', '8px', 'important');
+      }
+    });
+  });
+
+  // 1d. py-* and my-* classes (padding-y / margin-y) — reduce vertical padding
+  //     py-10=40px, py-12=48px, py-16=64px, py-20=80px, py-28=112px
+  ['py-8','py-10','py-12','py-14','py-16','py-20','py-24','py-28','py-32'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      el.style.setProperty('padding-top', '8px', 'important');
+      el.style.setProperty('padding-bottom', '8px', 'important');
+    });
+  });
+  // Arbitrary py-[calc(...)], py-[XXrem] etc.
+  document.querySelectorAll('[class*="py-["]').forEach(function(el) {
+    el.style.setProperty('padding-top', '8px', 'important');
+    el.style.setProperty('padding-bottom', '8px', 'important');
+  });
+  ['my-8','my-10','my-12','my-14','my-16','my-20','my-24','my-28','my-32'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      el.style.setProperty('margin-top', '4px', 'important');
+      el.style.setProperty('margin-bottom', '4px', 'important');
+    });
+  });
+
+  // 1e. Special components: ssc-root (settings comparison), callouts, tables
+  document.querySelectorAll('.ssc-root, [class*="ssc-"]').forEach(function(el) {
+    el.style.setProperty('margin-top', '8px', 'important');
+    el.style.setProperty('margin-bottom', '8px', 'important');
+    el.style.setProperty('padding-top', '8px', 'important');
+    el.style.setProperty('padding-bottom', '8px', 'important');
+  });
+
+  // 1f. Card grid items: mt-6 (24px) / lg:mt-8 (32px) → compact
+  ['mt-6','mt-7'].forEach(function(c) {
+    document.querySelectorAll('.' + c).forEach(function(el) {
+      if (!el.classList.contains('mdx-content')) {
+        el.style.setProperty('margin-top', '8px', 'important');
+      }
+    });
+  });
+
+  // 1f. Code blocks: mt-5 (20px) + mb-8 (32px) → compact
+  document.querySelectorAll('[class*="code-block"]').forEach(function(el) {
+    el.style.setProperty('margin-top', '8px', 'important');
+    el.style.setProperty('margin-bottom', '8px', 'important');
+  });
+
+  // 1g. Section headings (h2, h3): browser default mt ~32-36px → compact
+  document.querySelectorAll('h2, h3').forEach(function(el) {
+    el.style.setProperty('margin-top', '16px', 'important');
+    el.style.setProperty('margin-bottom', '8px', 'important');
+  });
+
+  // Fix top nav bar to relative positioning (avoid overlap in PDF)
   document.querySelectorAll('header.fixed, header.sticky, header.z-30').forEach(function(el) {
     el.style.setProperty('position', 'relative', 'important');
     el.style.setProperty('top', 'auto', 'important');
   });
+
+  // 2. Hide left sidebar
   document.querySelectorAll('nav#sidebar, aside[role="navigation"], #sidebar-content').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // Hide backdrop overlay
   document.querySelectorAll('[class*="backdrop"], [id*="backdrop"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // 3. Hide right TOC
   document.querySelectorAll('ul.toc, .toc, [class*="tableOfContents"], [class*="tocCollapsible"], aside[aria-label="On this page"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // 4. Hide "Copy page" button
   document.querySelectorAll('*').forEach(function(el) {
     var text = el.textContent || '';
     if ((text === '复制页面' || text === 'Copy page' || text === 'Copy')
@@ -59,12 +174,18 @@ function() {
       el.style.setProperty('display', 'none', 'important');
     }
   });
+
+  // Hide copy buttons in code blocks
   document.querySelectorAll('pre button, [class*="copy"] button, .copy-button').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // 5. Hide footer/feedback
   document.querySelectorAll('footer.advanced-footer, footer[role="contentinfo"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // Hide feedback widget
   document.querySelectorAll('*').forEach(function(el) {
     var text = el.textContent || '';
     if ((text.includes('Was this page helpful') || text.includes('此页面') || text.includes('有帮助吗'))
@@ -75,21 +196,30 @@ function() {
   document.querySelectorAll('[class*="feedback"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // 6. Hide Claude Code AI input bar
   document.querySelectorAll('[class*="assistant-bar"], [class*="chat-assistant"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // 7. Hide prev/next article navigation
   document.querySelectorAll('[class*="pagination"], [class*="prevNext"], [class*="footer-nav"]').forEach(function(el) {
     el.style.setProperty('display', 'none', 'important');
   });
+
+  // Hide bottom prev/next nav container (flex row with small text at end of article)
   document.querySelectorAll('a').forEach(function(a) {
     var parent = a.parentElement;
     if (!parent) return;
     var cls = parent.getAttribute('class') || '';
+    // Match the specific bottom nav container: "px-0.5 flex items-center text-sm font-semibold text-gray-700"
     if (cls.indexOf('px-0') >= 0 && cls.indexOf('flex') >= 0 && cls.indexOf('items-center') >= 0 &&
         cls.indexOf('text-sm') >= 0 && cls.indexOf('font-semibold') >= 0 && cls.indexOf('text-gray-700') >= 0) {
       parent.style.setProperty('display', 'none', 'important');
     }
   });
+
+  // Remove "Edit this page"
   document.querySelectorAll('*').forEach(function(el) {
     var text = el.textContent || '';
     if ((text.trim() === '编辑此页' || text.trim() === 'Edit this page')
@@ -97,6 +227,8 @@ function() {
       el.style.setProperty('display', 'none', 'important');
     }
   });
+
+  // 8. Frontmatter cleanup
   (function() {
     var mdDiv = document.querySelector('.mdx-content, .prose, [class*="markdown"]');
     if (!mdDiv) return;
@@ -131,6 +263,17 @@ function() {
       node = nextSibling;
     }
   })();
+
+  // 9. Expand all <details> / accordion elements (closed by default on many pages)
+  document.querySelectorAll('details').forEach(function(el) {
+    el.setAttribute('open', '');
+    el.open = true;
+    // Remove any overflow:hidden or height constraints that might hide content
+    el.style.setProperty('overflow', 'visible', 'important');
+    el.style.setProperty('max-height', 'none', 'important');
+  });
+
+  // 10. Expand tab components (show all tabs sequentially)
   var tabLists = document.querySelectorAll('[role="tablist"], .tabs, [class*="tabs__"]');
   for (var t = 0; t < tabLists.length; t++) {
     var tabList = tabLists[t];
@@ -168,6 +311,8 @@ function() {
       tabList.parentNode.insertBefore(section, tabList);
     }
   }
+
+  // 11. Fix image paths
   document.querySelectorAll('img').forEach(function(el) {
     if (el.src) {
       el.onerror = function() {
@@ -183,11 +328,18 @@ function() {
       };
     }
   });
+
+  // 11b. Tall diagrams (e.g. hooks lifecycle, 520x1228 portrait) — taller than a
+  //      page and wrapped in overflow:hidden frames, which makes Chromium shrink
+  //      the image and emit blank pages. Unconstrain the frame and size the image
+  //      to fit one printable page, kept intact with break-inside:avoid.
   document.querySelectorAll('img').forEach(function(el) {
     var rect = el.getBoundingClientRect();
     var hAttr = parseInt(el.getAttribute('height'), 10) || 0;
     var isTall = rect.height > 600 || hAttr > 600;
     if (!isTall) return;
+    // Walk up and clear overflow:hidden / fixed heights so the image is not clipped
+    // or shrunk by object-fit:contain inside a collapsed flex box.
     var node = el.parentElement;
     for (var i = 0; i < 6 && node; i++) {
       var cs = window.getComputedStyle(node);
@@ -197,6 +349,7 @@ function() {
       }
       node = node.parentElement;
     }
+    // Size to fit one A4 page (content height ~270mm) and keep it whole on one page.
     el.style.setProperty('max-width', '100%', 'important');
     el.style.setProperty('max-height', '270mm', 'important');
     el.style.setProperty('width', 'auto', 'important');
@@ -207,6 +360,8 @@ function() {
     el.style.setProperty('break-inside', 'avoid', 'important');
     el.style.setProperty('page-break-inside', 'avoid', 'important');
   });
+
+  // 11. Print-only CSS — global spacing overrides as fallback
   var bgStyle = document.createElement('style');
   bgStyle.textContent = [
     'html, body { background-color: #FFFFFF !important; }',
@@ -214,13 +369,45 @@ function() {
     'pre, code { white-space: pre-wrap !important; overflow-wrap: anywhere !important; max-width: 100% !important; }',
     '* { orphans: 1 !important; widows: 1 !important; }',
     'h1,h2,h3,h4,h5,h6 { break-after: avoid !important; page-break-after: avoid !important; }',
+    // Content full-width (sidebar is hidden)
     '.flex.flex-row-reverse { display: block !important; }',
+    // Print-level spacing overrides: compress vertical gaps
+    // Tailwind scale: pt-1=4px ... pt-10=40px ... pt-16=64px ... pt-28=112px ... pt-40=160px
+    '[class*="pt-10"],[class*="pt-12"],[class*="pt-14"],[class*="pt-16"],[class*="pt-20"],[class*="pt-24"],[class*="pt-28"],[class*="pt-32"],[class*="pt-36"],[class*="pt-40"],[class*="pt-44"],[class*="pt-48"],[class*="pt-56"],[class*="pt-64"],[class*="pt-72"],[class*="pt-80"],[class*="pt-96"] { padding-top: 8px !important; }',
+    '[class*="pb-10"],[class*="pb-12"],[class*="pb-16"],[class*="pb-20"],[class*="pb-24"],[class*="pb-28"],[class*="pb-32"],[class*="pb-40"] { padding-bottom: 8px !important; }',
+    '[class*="py-10"],[class*="py-12"],[class*="py-14"],[class*="py-16"],[class*="py-20"],[class*="py-24"],[class*="py-28"],[class*="py-32"],[class*="py-36"],[class*="py-40"],[class*="py-44"],[class*="py-48"],[class*="py-56"],[class*="py-64"] { padding-top: 8px !important; padding-bottom: 8px !important; }',
+    '[class*="mt-8"],[class*="mt-10"],[class*="mt-12"],[class*="mt-14"],[class*="mt-16"],[class*="mt-20"],[class*="mt-24"],[class*="mt-28"],[class*="mt-32"],[class*="mt-36"],[class*="mt-40"],[class*="mt-44"],[class*="mt-48"],[class*="mt-56"],[class*="mt-64"],[class*="mt-72"],[class*="mt-80"],[class*="mt-96"] { margin-top: 8px !important; }',
+    '[class*="mb-8"],[class*="mb-10"],[class*="mb-12"],[class*="mb-14"],[class*="mb-16"],[class*="mb-20"],[class*="mb-24"],[class*="mb-28"],[class*="mb-32"],[class*="mb-36"],[class*="mb-40"],[class*="mb-44"],[class*="mb-48"],[class*="mb-56"],[class*="mb-64"] { margin-bottom: 8px !important; }',
+    '[class*="my-8"],[class*="my-10"],[class*="my-12"],[class*="my-14"],[class*="my-16"],[class*="my-20"],[class*="my-24"],[class*="my-28"],[class*="my-32"] { margin-top: 4px !important; margin-bottom: 4px !important; }',
+    // Arbitrary Tailwind values: pt-[calc(...)], py-[XXrem], mt-[XXpx], etc.
+    '[class*="pt-["] { padding-top: 16px !important; }',
+    '[class*="pb-["] { padding-bottom: 16px !important; }',
+    '[class*="py-["] { padding-top: 8px !important; padding-bottom: 8px !important; }',
+    '[class*="mt-["] { margin-top: 8px !important; }',
+    '[class*="mb-["] { margin-bottom: 8px !important; }',
+    '[class*="my-["] { margin-top: 4px !important; margin-bottom: 4px !important; }',
+    // Prose (typography) spacing compression
+    '.prose { margin-top: 8px !important; margin-bottom: 8px !important; }',
+    '.prose > * + * { margin-top: 8px !important; }',
+    '.prose h2, .prose h3, .prose h4 { margin-top: 16px !important; margin-bottom: 8px !important; }',
+    '.prose pre { margin-top: 8px !important; margin-bottom: 8px !important; }',
+    '.prose ul, .prose ol { margin-top: 4px !important; margin-bottom: 4px !important; }',
+    '.prose p { margin-top: 4px !important; margin-bottom: 4px !important; }',
+    // Gap compression
+    '.gap-12 { gap: 16px !important; }',
+    '.gap-10 { gap: 12px !important; }',
+    '.gap-8 { gap: 8px !important; }',
+    // Section divider spacing
+    '[class*="gap-y-8"],[class*="gap-y-10"],[class*="gap-y-12"],[class*="gap-y-16"],[class*="gap-y-20"] { gap-top: 8px !important; gap-bottom: 8px !important; }',
   ].join('');
   document.head.appendChild(bgStyle);
+
+  // 12. Cream/light yellow background → pure white (preserve code blocks/callouts)
   document.querySelectorAll('*').forEach(function(el) {
     var bg = window.getComputedStyle(el).backgroundColor;
     var tag = el.tagName;
     var cls = el.getAttribute('class') || '';
+    // Skip content elements that should keep their backgrounds
     if (tag === 'CODE' || tag === 'PRE' ||
         cls.indexOf('callout') >= 0 || cls.indexOf('prose') >= 0 ||
         cls.indexOf('code') >= 0 || cls.indexOf('block') >= 0 ||
@@ -228,11 +415,14 @@ function() {
         tag === 'THEAD' || tag === 'TBODY') {
       return;
     }
+    // Match cream/light colors - also handle accordion/foldable sections
     if (bg === 'rgb(253, 253, 247)' || bg === 'rgb(250, 250, 250)' || bg === 'rgb(249, 250, 251)' ||
         bg === 'rgb(248, 249, 250)' || bg === 'rgb(245, 245, 245)') {
       el.style.setProperty('background-color', '#FFFFFF', 'important');
     }
   });
+
+  // Also fix accordion/details cream backgrounds
   document.querySelectorAll('details, [class*="accordion"]').forEach(function(el) {
     var bg = window.getComputedStyle(el).backgroundColor;
     if (bg === 'rgb(253, 253, 247)' || bg === 'rgb(250, 250, 250)' || bg === 'rgb(249, 250, 251)' ||
@@ -240,6 +430,8 @@ function() {
       el.style.setProperty('background-color', '#FFFFFF', 'important');
     }
   });
+
+  // 13. Remove height constraints
   document.body.style.setProperty('height', 'auto', 'important');
   document.body.style.setProperty('min-height', 'auto', 'important');
   document.documentElement.style.setProperty('height', 'auto', 'important');
