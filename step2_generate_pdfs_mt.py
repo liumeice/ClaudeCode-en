@@ -137,6 +137,24 @@ function() {
     el.style.setProperty('padding-bottom', '8px', 'important');
   });
 
+  // 1e1. Callout icon–text alignment: the icon wrapper has mt-0.5 (2px top margin)
+  //       and the flex container defaults to align-items:stretch, causing the icon
+  //       to sit lower than the first text line. Fix by top-aligning the flex items
+  //       and zeroing the icon wrapper's top margin.
+  document.querySelectorAll('.callout, [role="note"], [role="alert"], [role="warning"], [role="danger"], [role="info"], [role="tip"]').forEach(function(el) {
+    var cs = window.getComputedStyle(el);
+    if (cs.display === 'flex' || cs.display === 'inline-flex') {
+      el.style.setProperty('align-items', 'flex-start', 'important');
+    }
+  });
+  document.querySelectorAll('[data-component-part="callout-icon"]').forEach(function(el) {
+    el.style.setProperty('transform', 'translateY(1px)', 'important');
+  });
+  // The content div has mt-2 (8px) pushing it below the icon; zero it too.
+  document.querySelectorAll('[data-component-part="callout-content"]').forEach(function(el) {
+    el.style.setProperty('margin-top', '0', 'important');
+  });
+
   // 1f. Card grid items: mt-6 (24px) / lg:mt-8 (32px) → compact
   ['mt-6','mt-7'].forEach(function(c) {
     document.querySelectorAll('.' + c).forEach(function(el) {
