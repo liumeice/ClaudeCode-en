@@ -31,6 +31,19 @@ DOM_MANIPULATE_JS = """
 function() {
   // === Keep top nav bar and icons, hide unwanted elements ===
 
+  // 0. Remove dark-mode-only image variants (Mintlify dual images).
+  //    Every diagram is paired: light version (class "dark:mint-hidden",
+  //    visible in light mode) + dark version (class "mint-hidden" with
+  //    "dark:mint-block", display:none in light mode). The PDF renders in
+  //    light mode, so delete the dark variants up front — otherwise later
+  //    steps (e.g. 11b forcing display:block on tall images) can un-hide
+  //    them and print both variants side by side.
+  document.querySelectorAll('img').forEach(function(el) {
+    if (el.classList.contains('mint-hidden') && !el.classList.contains('dark:mint-hidden')) {
+      el.remove();
+    }
+  });
+
   // 1. Compress vertical spacing in the main content area
   //    (diagnosed: pt-[calc(10rem+...)] = 160px+ computed, mt-8 = 32px, mb-14 = 32px,
   //     h2 mt = 36px, code blocks mt-5/mb-8 = 20/32px, card grids mt-6/mt-8 = 24/32px)
@@ -330,6 +343,9 @@ function() {
   //      the image and emit blank pages. Unconstrain the frame and size the image
   //      to fit one printable page, kept intact with break-inside:avoid.
   document.querySelectorAll('img').forEach(function(el) {
+    // Never touch images that are legitimately hidden (e.g. dark-mode
+    // variants) — forcing display:block here would print them too.
+    if (el.getClientRects().length === 0) return;
     var rect = el.getBoundingClientRect();
     var hAttr = parseInt(el.getAttribute('height'), 10) || 0;
     var isTall = rect.height > 600 || hAttr > 600;
@@ -356,6 +372,36 @@ function() {
     el.style.setProperty('break-inside', 'avoid', 'important');
     el.style.setProperty('page-break-inside', 'avoid', 'important');
   });
+
+  // 10c. 修复代码块提前换行（必须在下面注入 print CSS 之前执行）。
+  //      站点代码块为横向滚动设计，样式表规则
+  //        [data-has-floating-buttons] > [data-component-part="code-block-root"] pre > code {
+  //          padding-right: var(--code-padding-right, 0px) !important;  (~163px，为浮动按钮预留)
+  //        }
+  //      在 max-width:100% 收缩后残留盒内（border-box），偷走折行宽度，长行提前约 19 字符折断。
+  //      且站点监听 beforeprint 重建代码块 DOM，行内修复会被清掉——因此必须改写
+  //      样式表规则本身（CSSOM）。打印时浮动按钮已被隐藏，该预留空间清零是安全的。
+  (function() {
+    function patchRules(rules) {
+      for (var ri = 0; ri < rules.length; ri++) {
+        var rule = rules[ri];
+        if (rule.cssRules && !(rule instanceof CSSStyleRule)) {
+          patchRules(rule.cssRules);
+          continue;
+        }
+        if (!rule.selectorText) continue;
+        if (rule.selectorText.indexOf('[data-has-floating-buttons]') >= 0 &&
+            rule.style && rule.style.getPropertyValue('padding-right')) {
+          rule.style.setProperty('padding-right', '0px', 'important');
+        }
+      }
+    }
+    for (var si = 0; si < document.styleSheets.length; si++) {
+      var rules;
+      try { rules = document.styleSheets[si].cssRules; } catch (e) { continue; }
+      patchRules(rules);
+    }
+  })();
 
   // 11. Print-only CSS — global spacing overrides as fallback
   var bgStyle = document.createElement('style');
